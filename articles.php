@@ -10,20 +10,7 @@
     <title>Articles</title>
 </head>
 <body>
-    <header>
-        <nav id="NavigationBar">
-            <div id="HamburgerMenu">
-                <!-- We are swapping between the Hamburger button and the UnorderedList responsively -->
-                <button id="HamburgerButton" class="navigational"><img src="./cache/icons_Hamburger.png" onclick="ToggleHamburger()"></button>
-                <ul id="HamLinks" class="Collapsed">   
-                    <li class="navigational"><a href="./index.html">Accueil</a></li>
-                    <li class="navigational selected"><a href="./articles.html">Articles</a></li>
-                    <li class="navigational"><a href="./contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <a id="Login" class="navigational" href="./login.html">Login</a>
-        </nav>
-    </header>
+    <?php include './components/header-navbar.php'; ?>
     
     <section id="ArticlesBox" class="ContentBoxes">
         
@@ -32,7 +19,7 @@
                 <h2>Poulet Korma </h2>
                 <h3>Catégories : Plat</h3>
                 <h5>Le 01/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -48,7 +35,7 @@
                 <h2>Glace à la cardamome </h2>
                 <h3>Catégories : Dessert</h3>
                 <h5>Le 02/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe2.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -62,7 +49,7 @@
                 <h2>Salade méditéranéen </h2>
                 <h3>Catégories : Entrée</h3>
                 <h5>Le 03/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe3.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -77,7 +64,7 @@
                 <h2>Dhal salade </h2> 
                 <h3>Catégories : Entrée</h3>
                 <h5>Le 04/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe4.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -95,7 +82,7 @@
                 <h2>Pizza </h2>
                 <h3>Catégories : Plat</h3>
                 <h5>Le 05/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe5.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -109,7 +96,7 @@
                 <h2>Chutney </h2>
                 <h3>Catégories : Apéritifs</h3>
                 <h5>06/06/23 </h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe6.jpeg" alt="Picture Of Recipe">
                 </a>
                 <span>Descriptions :
@@ -154,5 +141,8 @@
             })
         });
     </script>
+
+    <?php include './components/footer.php'; ?>
+
 </body>
 </html>

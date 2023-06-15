@@ -10,20 +10,7 @@
     <title>Articles</title>
 </head>
 <body>
-    <header>
-        <nav id="NavigationBar">
-            <div id="HamburgerMenu">
-                <!-- We are swapping between the Hamburger button and the UnorderedList responsively -->
-                <button id="HamburgerButton" class="navigational"><img src="./cache/icons_Hamburger.png" onclick="ToggleHamburger()"></button>
-                <ul id="HamLinks" class="Collapsed">   
-                    <li class="navigational"><a href="./index.html">Accueil</a></li>
-                    <li class="navigational selected"><a href="./articles.html">Articles</a></li>
-                    <li class="navigational"><a href="./contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <a id="Login" class="navigational" href="./login.html">Login</a>
-        </nav>
-    </header>
+    <?php include './components/header-navbar.php'; ?>
 
     <!-- This is interesting: we could define in HTML a structure
         and clone it as many times we need it
@@ -36,7 +23,7 @@
             <h3>Recipe 1</h3>
             <h4>Date goes here</h4>
             <h5>Category</h5>
-            <a href="./article-individual.html">
+            <a href="./article-individual.php">
                 <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
             </a>
             <span>Description goes here</span>
@@ -60,7 +47,7 @@
                 <h3>Recipe 1</h3>
                 <h4>Date goes here</h4>
                 <h5>Category</h5>
-                <a href="./article-individual.html">
+                <a href="./article-individual.php">
                     <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
                 </a>
                 <span>Description goes here</span>
@@ -80,7 +67,7 @@
                 Date : "2023/01/01",
                 Category : "Lunch",
                 ImageLink : "./cache/recipe1.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "Meat Description"
             },
             {
@@ -88,7 +75,7 @@
                 Date : "2023/02/01",
                 Category : "Dessert",
                 ImageLink : "./cache/recipe2.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "ummm dessert"
             },
             {
@@ -96,7 +83,7 @@
                 Date : "2023/03/01",
                 Category : "Lunch",
                 ImageLink : "./cache/recipe3.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "Looks like some pizza"
             },
             {
@@ -104,7 +91,7 @@
                 Date : "2023/04/01",
                 Category : "Lunch",
                 ImageLink : "./cache/recipe4.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "Some Couscous Description goes here"
             },
             {
@@ -112,7 +99,7 @@
                 Date : "2023/05/01",
                 Category : "Lunch",
                 ImageLink : "./cache/recipe5.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "And that's a salad"
             },
             {
@@ -120,7 +107,7 @@
                 Date : "2023/06/01",
                 Category : "Lunch",
                 ImageLink : "./cache/recipe6.jpeg",
-                Link : "./article-individual.html",
+                Link : "./article-individual.php",
                 Description : "Some tomato sauce description"
             }
         ];
@@ -188,5 +175,7 @@
             }, "2000");
         }
     </script>
+
+    <?php include './components/footer.php'; ?>
 </body>
 </html>
