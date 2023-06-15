@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+
+    <title>Articles</title>
+</head>
+<body>
+    <header>
+        <nav id="NavigationBar">
+            <div id="HamburgerMenu">
+                <!-- We are swapping between the Hamburger button and the UnorderedList responsively -->
+                <button id="HamburgerButton" class="navigational"><img src="./cache/icons_Hamburger.png" onclick="ToggleHamburger()"></button>
+                <ul id="HamLinks" class="Collapsed">   
+                    <li class="navigational"><a href="./index.html">Accueil</a></li>
+                    <li class="navigational selected"><a href="./articles.html">Articles</a></li>
+                    <li class="navigational"><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a id="Login" class="navigational" href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <!-- This is interesting: we could define in HTML a structure
+        and clone it as many times we need it
+        nevermind 'slots', just insert the data from Javascript when you generate an article
+    -->
+    
+<!--
+    <template id="Cooking-Article">
+        <article>
+            <h3>Recipe 1</h3>
+            <h4>Date goes here</h4>
+            <h5>Category</h5>
+            <a href="./article-individual.html">
+                <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
+            </a>
+            <span>Description goes here</span>
+            <button>Click To Open</button>
+        </article>
+    </template>
+    
+    <script>
+        let template = document.getElementById("Cooking-Article");
+        console.log(template);
+        let templateContent = template.content;
+        console.log(templateContent);
+        document.body.appendChild(templateContent.cloneNode(true));
+    </script>
+-->
+    
+    <section id="ArticlesBox" class="ContentBoxes">
+        
+        <div id="TheArticles">
+            <!-- <article>
+                <h3>Recipe 1</h3>
+                <h4>Date goes here</h4>
+                <h5>Category</h5>
+                <a href="./article-individual.html">
+                    <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
+                </a>
+                <span>Description goes here</span>
+                <button>Click To Open</button>
+            </article> -->
+        </div>
+
+        <!-- <button id="LoadMoreButton" onclick="LoadMore()">LOAD MORE<br>...</button> -->
+
+    </section>
+
+    <script defer>
+
+        let FakeArticleData = [
+            {
+                Title : "Recipe 1",
+                Date : "2023/01/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe1.jpeg",
+                Link : "./article-individual.html",
+                Description : "Meat Description"
+            },
+            {
+                Title : "Recipe 2",
+                Date : "2023/02/01",
+                Category : "Dessert",
+                ImageLink : "./cache/recipe2.jpeg",
+                Link : "./article-individual.html",
+                Description : "ummm dessert"
+            },
+            {
+                Title : "Recipe 3",
+                Date : "2023/03/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe3.jpeg",
+                Link : "./article-individual.html",
+                Description : "Looks like some pizza"
+            },
+            {
+                Title : "Recipe 4",
+                Date : "2023/04/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe4.jpeg",
+                Link : "./article-individual.html",
+                Description : "Some Couscous Description goes here"
+            },
+            {
+                Title : "Recipe 5",
+                Date : "2023/05/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe5.jpeg",
+                Link : "./article-individual.html",
+                Description : "And that's a salad"
+            },
+            {
+                Title : "Recipe 6",
+                Date : "2023/06/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe6.jpeg",
+                Link : "./article-individual.html",
+                Description : "Some tomato sauce description"
+            }
+        ];
+
+
+        function GenerateArticles(ArticlesData)
+        {
+            let ArticlesBox = document.getElementById("TheArticles");
+
+            // for (let Index = 1; Index <= ArticlesData.length; Index++) {
+            ArticlesData.forEach((Each, Index) => {
+
+                let NewArticle = document.createElement("article");
+                NewArticle.id = `recipe${Index + 1}`;
+
+                let Title = document.createElement("h3");
+                Title.innerHTML = Each.Title;
+
+                let Date = document.createElement("h4");
+                Date.innerHTML = Each.Date;
+
+                let Category = document.createElement("h5");
+                Category.innerHTML = Each.Category;
+
+                let Anchor = document.createElement("a");
+                Anchor.href = Each.Link;
+
+                let Image = document.createElement("img");
+                Image.src= Each.ImageLink;
+                Image.alt=`Picture Of ${Each.Title}`;
+                
+                Anchor.append(Image);
+
+                let Description = document.createElement("span");
+                Description.innerHTML = Each.Description;
+
+                let Button = document.createElement("button");
+                Button.innerHTML = "Click To Open";
+
+                NewArticle.append(Title, Date, Category, Anchor, Description, Button);
+
+                // ArticlesBox.append(NewArticle);
+                // ArticlesBox.insertAdjacentElement("beforeend", NewArticle);
+                ArticlesBox.appendChild(NewArticle);
+            });
+        }
+
+        GenerateArticles(FakeArticleData);
+
+
+
+        let LoadMore = function (){
+            //in this example we'll simply pretend to fetch results
+            //and claims everything has been loaded
+            //also kill the button
+
+            let LoadMoreButton = document.getElementById("LoadMoreButton");
+
+            LoadMoreButton.removeEventListener('click', LoadMore);
+
+            LoadMoreButton.innerHTML = "Fetching<br>...";
+
+            setTimeout(()=>{
+                LoadMoreButton.innerHTML = "All articles has been loaded";
+            }, "2000");
+        }
+    </script>
+</body>
+</html>

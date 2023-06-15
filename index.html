@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+
+    <title>Accueil</title>
+</head>
+<body>
+    <header>
+        <nav id="NavigationBar">
+            <div id="HamburgerMenu">
+                <!-- We are swapping between the Hamburger button and the UnorderedList responsively -->
+                <button id="HamburgerButton" class="navigational"><img src="./cache/icons_Hamburger.png" onclick="ToggleHamburger()"></button>
+                <ul id="HamLinks" class="Collapsed">   
+                    <li class="navigational selected"><a href="./index.html">Accueil</a></li>
+                    <li class="navigational"><a href="./articles.html">Articles</a></li>
+                    <li class="navigational"><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a id="Login" class="navigational" href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section id="Entrance" class="ContentBoxes">
+        <h1>Welcome to Cookery_Sland</h1>
+        <form id="SearchForm" action="articles.html?exemples=value">
+            <div id="Entries">
+                <input type="text" id="SearchEntry" name="SearchEntry" size="20" required>
+
+                <div id="Options">
+                    <select name="Category" id="Category">
+                        <option value="Viandard">Viandard</option>
+                        <option value="Végétarien">Végétarien</option>
+                    </select>
+        
+                    <select name="Order" id="Order">
+                        <option value="Croissant">Croissant</option>
+                        <option value="Décroissant">Décroissant</option>
+                    </select>
+                </div>
+            </div>
+
+            <button>Search</button>
+        </form>
+    </section>
+    
+</body>
+</html>

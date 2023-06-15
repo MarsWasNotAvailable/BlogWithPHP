@@ -1,0 +1,424 @@
+/* Default: */
+
+* {
+    font-family: 'roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    /* box-sizing: border-box; */
+    /* box-sizing: content-box; */
+}
+
+html {
+    /* height: 100%; */
+}
+
+body{
+    min-height: 100vh;
+
+    /* background-image: linear-gradient(to right, rgba(255, 255, 255, 0.215) 100% 100%), url('./cache/Bakcrground2.jpg'); */
+    /* background-size: 100% 300%; */
+    /* background: linear-gradient(0.25turn, #c1bbb6, #fdc789, #f69d3c); */
+    /* background: linear-gradient(to left, #fff4f4, #fadbdb 50%, #eee 75%, #ffdbdb 75%); */
+
+    object-fit: fill;
+    /* object-position: 50% 50%; */
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.215) 100% 100%), url('./cache/Epices2.jpeg');
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+
+a {
+    color: #ff0303;
+    font-weight: bold;
+    text-decoration: none;
+    justify-content: center;
+}
+
+a:hover {
+    text-decoration: underline;
+    justify-content: center;
+
+    /* cursor: pointer; */
+}
+
+button {
+    /* background: none;
+    border: none; */
+    background: transparent;
+    border-radius: 4%; 
+    border-color: rgb(255, 118, 5);
+    color: rgb(0, 0, 0); 
+    font-family: 'Vollkorn';
+    font-weight: bold;
+
+    padding: 1%;
+}
+
+button:hover {
+    /* background: green; */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+section {
+    border: 3px;
+    background-color: white;
+}
+
+hr {
+    border: black solid 2px;
+}
+
+
+
+
+/* Navigation Bar: */
+
+#NavigationBar {
+    display: flex;
+}
+
+nav .navigational{
+    display: inline-flex;
+    padding: 1.5em;
+    border: transparent solid 3px;
+}
+
+nav .navigational.selected {
+    border: black solid 3px;
+}
+
+#HamburgerMenu {
+    width: 94.5%;
+}
+
+#HamburgerButton {
+    display: none;
+}
+
+#HamburgerButton img {
+    width: 8%;
+}
+
+#HamLinks {
+    display: flex;
+    flex-direction: row;
+}
+
+#Login {
+    width: 2.5%;
+}
+
+@media (max-width: 900px) {
+    #HamburgerButton {
+        display: flex;
+    }
+
+    nav .navigational{
+        display: inline-flex;
+        padding: 0.8em;
+    }
+
+    #HamLinks {
+        flex-direction: column;
+    }
+
+    #HamLinks.Collapsed {
+        display: none;
+    }
+
+    #HamLinks.Visible {
+        display: flex;
+    }
+    
+    #Login {
+        height: 100%;
+        width: 8.5%;
+    }
+}
+
+
+/* Home: Search Form  */
+
+#Entrance {
+    display: block;
+    margin: auto;
+    /* margin: auto auto 0% auto;; */
+    width: 50%;
+    background-image: linear-gradient(to bottom, rgba(204, 203, 202, 0.718), rgba(66, 65, 54, 0.579));
+}
+
+#Entrance h1 {
+    padding: 1.5em 0;
+    display: block;
+    margin: auto;
+    width: 70%;
+    text-align: center;  
+    border-radius: 10%;
+    font-family: 'Pacifico', cursive;
+}
+
+@media (max-width: 900px) {
+    #Entrance h1 {
+        font-size: smaller;
+        width: 105%;
+    }
+}
+
+#Entrance form {
+    display: block;
+    margin: auto;
+    /* width: 75%; */
+    padding: 1em;
+}
+
+#Entries {
+    width: 90%;
+    display: inline-grid;
+}
+
+#Entries input {
+    width: 50%;
+}
+
+#Options {
+    width: 15%;
+}
+
+#Options select {
+    display: block;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#Entrance form button {
+    display: inline;
+}
+
+@media (max-width: 900px) {
+
+    #Entrance form * {
+        /* display: inline; */
+        width: 90%;
+        /* margin: 0 auto ; */
+    }
+}
+
+/* Contact Page */
+
+.ContactField {
+    width: 75%;
+
+    margin: 4em 2em;
+}
+
+
+
+/* Individual Article: main body */
+
+#ArticleBox h5 {
+    padding: 1.5em 0;
+    display: block;
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
+
+#ImagePreview {
+    width: 50%;
+    float: right;
+}
+
+#ImagePreview img {
+    width: 100%;
+}
+
+
+#Instructions {
+    width: 50%;
+}
+
+#Steps, #Ingredients {
+    margin-right: 1em;
+}
+
+#Instructions li {
+    margin-left: 2em;
+}
+
+#Instructions legend {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+@media (max-width: 900px) {
+    #ArticleBox img {
+        width: 100%;
+        display: block;
+        float: none;
+    }
+
+    #Instructions {
+       display: inline;
+    }
+}
+
+/* Individual Article: Comments */
+
+.ContentBoxes {
+    width: 50%;
+    margin: 2em auto;
+    padding: 2em;
+
+    display: block;
+}
+
+#CommentBox textarea {
+    display: block;
+}
+
+#CommentBody {
+    width: 100%;
+}
+
+#SendCommentForm * {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.Comment {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+}
+
+#PostButton {
+    border: black solid 2px;
+}
+
+
+#InstructionsRedact form {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#ImagePreviewRedact {
+    width: 100%;
+    /* float: right; */
+}
+
+#ImagePreviewRedact img {
+    width: 100%;
+}
+
+
+/* Login Page */
+
+#LoginBox form {
+    display: grid;
+    justify-content: center;
+}
+
+#LoginBox form label, #LoginBox form input{
+    /* margin-top: 1.5em; */
+    margin-bottom: 1em;
+}
+
+#LoginBox input {
+    display: block;
+    width: 100%;
+    margin: auto;
+}
+
+#LoginBox a {
+    display: block;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#TheButtons {
+    display: flex;
+    margin-top: 8em;
+    margin-bottom: 8em;
+
+    height: 30%;
+}
+
+#LoginBox button {
+    display: inline;
+    /* width: 49%; */
+    /* border: black solid 2px; */
+
+    width: 20%;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+
+    #LoginBox button {
+        width: 40%;
+    }
+
+}
+
+
+/* Articles Page */
+
+#ArticlesBox {
+    width: 90%;
+
+    justify-items: center;
+}
+
+#TheArticles {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    justify-items: center;
+}
+
+#ArticlesBox article {
+    width: 80%;
+    border-bottom: 3px solid black;
+}
+
+#ArticlesBox article a img {
+    width: 100%;
+}
+
+#ArticlesBox button {
+    display: block;
+    width: 25%;
+    margin: 2em auto;
+
+    /* padding: 0.4em; */
+}
+
+@media (max-width: 900px) {
+
+    #TheArticles {
+        display: block;
+        /* width: 90%;
+        margin-left: auto;
+        margin-right: auto; */
+    }
+
+    #TheArticles article {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

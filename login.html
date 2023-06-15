@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <nav id="NavigationBar">
+            <div id="HamburgerMenu">
+                <!-- We are swapping between the Hamburger button and the UnorderedList responsively -->
+                <button id="HamburgerButton" class="navigational"><img src="./cache/icons_Hamburger.png" onclick="ToggleHamburger()"></button>
+                <ul id="HamLinks" class="Collapsed">   
+                    <li class="navigational"><a href="./index.html">Accueil</a></li>
+                    <li class="navigational "><a href="./articles.html">Articles</a></li>
+                    <li class="navigational"><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a id="Login" class="navigational selected" href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section id="LoginBox" class="ContentBoxes">
+        <form action="#">
+            <label for="Email">Email</label>
+            <input type="email" name="Email" id="Email" size="90">
+
+            <label for="Password">Password</label>
+            <input type="password" name="Password" id="Password" size="90">
+
+            <a>Forgot your password ?</a>
+
+            <div id="TheButtons">
+                <button>Login</button>
+                <button>Signup</button>
+            </div>
+        </form>
+    </section>
+    
+</body>
+</html>
