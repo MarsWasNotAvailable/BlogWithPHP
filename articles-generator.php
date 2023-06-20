@@ -10,158 +10,66 @@
     <title>Articles</title>
 </head>
 <body>
-    <?php include './components/header-navbar.php'; ?>
 
-    <!-- This is interesting: we could define in HTML a structure
-        and clone it as many times we need it
-        nevermind 'slots', just insert the data from Javascript when you generate an article
-    -->
-    
-<!--
-    <template id="Cooking-Article">
-        <article>
-            <h3>Recipe 1</h3>
-            <h4>Date goes here</h4>
-            <h5>Category</h5>
-            <a href="./article-individual.php">
-                <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
-            </a>
-            <span>Description goes here</span>
-            <button>Click To Open</button>
-        </article>
-    </template>
-    
-    <script>
-        let template = document.getElementById("Cooking-Article");
-        console.log(template);
-        let templateContent = template.content;
-        console.log(templateContent);
-        document.body.appendChild(templateContent.cloneNode(true));
-    </script>
--->
+    <?php include './components/header-navbar.php'; ?>
     
     <section id="ArticlesBox" class="ContentBoxes">
         
-        <div id="TheArticles">
-            <!-- <article>
-                <h3>Recipe 1</h3>
-                <h4>Date goes here</h4>
-                <h5>Category</h5>
-                <a href="./article-individual.php">
-                    <img src="./cache/recipe1.jpeg" alt="Picture Of Recipe 1">
-                </a>
-                <span>Description goes here</span>
-                <button>Click To Open</button>
-            </article> -->
-        </div>
+        <?php
+        
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "blog_cookery";
+            
+            if (($_SERVER['REQUEST_METHOD'] == 'GET') )
+            {
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-        <!-- <button id="LoadMoreButton" onclick="LoadMore()">LOAD MORE<br>...</button> -->
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                else {
+                    $SQLStringSelect = "SELECT * FROM articles";
+                    $result = $conn->query($SQLStringSelect);
+                    
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        
+                        echo '<div id="TheArticles">';
+                        while($row = $result->fetch_assoc()) {
+            
+                            $Index = $row["idArticles"]; //1-based ?
+            
+                            echo '<article>';
+                            echo "<h3>Recipe $Index </h3>";
+                            echo '<h4>' . $row["Date"] . '</h4>';
+                            echo '<h5>' . $row["Category"] . '</h5>';
+                            echo '<a href="' . './' . $row["Link"] . '">';
+                            echo '<img src="' . './cache/' . $row["ImageLink"] . '" alt="Picture Of Recipe">';
+                            echo '</a>';
+                            echo '<span>'  . $row["Description"] . '</span>';
+                            echo '<button onclick="(event) => {  }">Click To Open</button>';
+                            echo '</article>';
+                        }
+
+                        echo '</div>';
+                        echo '<button id="LoadMoreButton" onclick="LoadMore()">LOAD MORE<br>...</button>';
+                    } else {
+                        echo "0 results from selected database";
+                    }
+                }
+
+                $conn->close();
+            }
+        ?>
 
     </section>
 
     <script defer>
-
-        let FakeArticleData = [
-            {
-                Title : "Recipe 1",
-                Date : "2023/01/01",
-                Category : "Lunch",
-                ImageLink : "./cache/recipe1.jpeg",
-                Link : "./article-individual.php",
-                Description : "Meat Description"
-            },
-            {
-                Title : "Recipe 2",
-                Date : "2023/02/01",
-                Category : "Dessert",
-                ImageLink : "./cache/recipe2.jpeg",
-                Link : "./article-individual.php",
-                Description : "ummm dessert"
-            },
-            {
-                Title : "Recipe 3",
-                Date : "2023/03/01",
-                Category : "Lunch",
-                ImageLink : "./cache/recipe3.jpeg",
-                Link : "./article-individual.php",
-                Description : "Looks like some pizza"
-            },
-            {
-                Title : "Recipe 4",
-                Date : "2023/04/01",
-                Category : "Lunch",
-                ImageLink : "./cache/recipe4.jpeg",
-                Link : "./article-individual.php",
-                Description : "Some Couscous Description goes here"
-            },
-            {
-                Title : "Recipe 5",
-                Date : "2023/05/01",
-                Category : "Lunch",
-                ImageLink : "./cache/recipe5.jpeg",
-                Link : "./article-individual.php",
-                Description : "And that's a salad"
-            },
-            {
-                Title : "Recipe 6",
-                Date : "2023/06/01",
-                Category : "Lunch",
-                ImageLink : "./cache/recipe6.jpeg",
-                Link : "./article-individual.php",
-                Description : "Some tomato sauce description"
-            }
-        ];
-
-
-        function GenerateArticles(ArticlesData)
-        {
-            let ArticlesBox = document.getElementById("TheArticles");
-
-            // for (let Index = 1; Index <= ArticlesData.length; Index++) {
-            ArticlesData.forEach((Each, Index) => {
-
-                let NewArticle = document.createElement("article");
-                NewArticle.id = `recipe${Index + 1}`;
-
-                let Title = document.createElement("h3");
-                Title.innerHTML = Each.Title;
-
-                let Date = document.createElement("h4");
-                Date.innerHTML = Each.Date;
-
-                let Category = document.createElement("h5");
-                Category.innerHTML = Each.Category;
-
-                let Anchor = document.createElement("a");
-                Anchor.href = Each.Link;
-
-                let Image = document.createElement("img");
-                Image.src= Each.ImageLink;
-                Image.alt=`Picture Of ${Each.Title}`;
-                
-                Anchor.append(Image);
-
-                let Description = document.createElement("span");
-                Description.innerHTML = Each.Description;
-
-                let Button = document.createElement("button");
-                Button.innerHTML = "Click To Open";
-
-                NewArticle.append(Title, Date, Category, Anchor, Description, Button);
-
-                // ArticlesBox.append(NewArticle);
-                // ArticlesBox.insertAdjacentElement("beforeend", NewArticle);
-                ArticlesBox.appendChild(NewArticle);
-            });
-        }
-
-        GenerateArticles(FakeArticleData);
-
-
-
         let LoadMore = function (){
-            //in this example we'll simply pretend to fetch results
-            //and claims everything has been loaded
+            //here we pretend to fetch results, and claims everything has been loaded
             //also kill the button
 
             let LoadMoreButton = document.getElementById("LoadMoreButton");
@@ -174,6 +82,18 @@
                 LoadMoreButton.innerHTML = "All articles has been loaded";
             }, "2000");
         }
+
+        let AllButtons = document.querySelectorAll("article button");
+
+        AllButtons.forEach((EachButton) => {
+            EachButton.addEventListener("click", (Event)=>{
+                console.log(EachButton.parentElement);
+
+                const Forward = EachButton.parentElement.getElementsByTagName("a")[0].href;
+
+                location.href = Forward;
+            })
+        });
     </script>
 
     <?php include './components/footer.php'; ?>
