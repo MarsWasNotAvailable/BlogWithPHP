@@ -16,10 +16,10 @@
 
     switch ($Direction) {
         case 'articles':
-            include './components/articles.php';
+            include './components/articles-dynamic.php';
             break;
         case 'selection':
-            include './components/articles.php';
+            include './components/articles-dynamic.php';
             break;
         case 'contact':
             include './components/contact.php';
